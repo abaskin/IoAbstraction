@@ -16,7 +16,11 @@
 /** 
  * the definition of an interrupt handler function, to be called back when an interrupt occurs.
  */
-typedef void (*RawIntHandler)(void);
+#ifdef USE_STD_FUNCTION
+	typedef std::function<void()> RawIntHandler;
+#else
+	typedef void (*RawIntHandler)();
+#endif
 
 /**
  * This class provides the interface by which all `IoAbstractionRef` types work. It makes it possible to

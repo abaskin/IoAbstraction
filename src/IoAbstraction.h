@@ -16,6 +16,15 @@
  * code to use an IoExpander instead of direct pins
  */
 
+/**
+ * Use std::function on ESP8266 and ESP32 as functional is supported. This allows
+ * defining lambada functions that capture.
+ */
+#if defined(ESP8266) || defined(ESP32)
+	#include <functional>
+	#define USE_STD_FUNCTION
+#endif
+
 #include "BasicIoAbstraction.h"
 
 #define SHIFT_REGISTER_OUTPUT_CUTOVER 32
