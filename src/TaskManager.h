@@ -48,22 +48,14 @@
 /**
  * Definition of a function to be called back when a scheduled event is required. Takes no parameters, returns nothing.
  */
-#ifdef USE_STD_FUNCTION
-	typedef std::function<void()> TimerFn;
-#else
-	typedef void (*TimerFn)();
-#endif
+typedef void (*TimerFn)();
 
 /**
  * Definition of a function to be called back when an interrupt is detected, marshalled by task manager into a task.
  * The pin that caused the interrupt is passed in the parameter on a best efforts basis.
  * @param pin the pin on which the interrupt occurred (best efforts)
- */
-#ifdef USE_STD_FUNCTION
-  typedef std::function<void(uint8_t)> InterruptFn;
-#else
-  typedef void (*InterruptFn)(uint8_t pin);
-#endif
+ */ 
+typedef void (*InterruptFn)(uint8_t pin);
 
 #define TASKMGR_INVALIDID 0xff
 
